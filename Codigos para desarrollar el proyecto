@@ -25,8 +25,7 @@
    $ ssh user@strasbourg.iot-lab.info
 
 5. Procedemos a crear el archivo .elf del Bourder_Router con la direccion que nos da cuando creamos el archivo con la tarjeta, "PASO 3"
-   $ scp nombre_de_usuario@strasbourg.iot-lab.info:/senslab/users/nupan/iot-lab/parts/RIOT/examples/gnrc_border_router/bin/openmote-b/gnrc_border_router.elf 
-     /home/nombre_maquina/Downloads/openmoteb-border-router.elf
+   $ scp nombre_de_usuario@strasbourg.iot-lab.info:/senslab/users/nupan/iot-lab/parts/RIOT/examples/gnrc_border_router/bin/openmote-b/gnrc_border_router.elf /home/nombre_maquina/Downloads/openmoteb-border-router.elf
 
 ******************************************
 *  PROCESO EN LA PLATAFORMA DE IOT LAB   *
@@ -35,9 +34,41 @@
 6. Sacamos el archivo .elf creado a nuestra maquina fisica y entramos a la pagina de iot-lab para crear un experimento
 7. Creamos un proyecto con los parametros utilizados en la maquina ubuntu
 8. Creamos 3 nodos donde uno sera utilizado para bourder router y los otros dos como nodos.
-9. En el primer nodo procedemos a flashearle con el archivo .elf correspondiente al bourder de router
+9. En el primer nodo procedemos a flashearle con el archivo .elf correspondiente al bourder de router y le ejecutamos
 
 **************************************
 * REGRESAMOS A LA TERMINAL DE UBUNTU *
 **************************************
-10. 
+10. En la ventana que esta abierdo la carpeta correspondiente al bourder_router procedemos a poner el siguiente codigo
+Puede cambiar dependiendo la configuracion del usuario:
+	- openmoteb-# = Id del nodo
+	- tap0 = Cambia en caso de estar ocupado
+	- La IP va a variar dependiendo el deployment utilizado
+$ sudo ethos_uhcpd.py openmoteb-8 tap0 2a07:2e40:fffe:00ff::/64
+
+**********************************************
+*  CREAMOS UNA NUEVA VENTANA EN EL TERMINAL  *
+**********************************************
+11. Iniciamos nuevamente con el usuario ssh
+   $ ssh user@strasbourg.iot-lab.info
+   
+12. Entramos nuevamente a la carpeta de examples y entramos a la carpeta de gnrc_networking
+   $ cd iot-lab/parts/RIOT/examples/gnrc_networking
+   $ source /opt/riot.source
+
+13. Ingresamos la tarjeta utilizada con el mismo canal que se utilizo en el bourder_router
+   $ make DEFAULT_CHANNEL=21 BOARD=openmote-b clean all
+
+**********************************************
+*  CREAMOS UNA NUEVA VENTANA EN EL TERMINAL  *
+**********************************************
+14. Iniciamos nuevamente con el usuario ssh
+   $ ssh user@strasbourg.iot-lab.info
+
+15. Procedemos a crear el archivo .elf del gnrc_networking con la direccion que nos da cuando creamos el archivo con la tarjeta, "PASO 13"
+   $ scp nupan@strasbourg.iot-lab.info:/senslab/users/nupan/iot-lab/parts/RIOT/examples/gnrc_networking/bin/openmote-b/gnrc_networking.elf /home/gnupan/Downloads/openmoteb-ipv6-networking.elf
+   
+*********************************************
+*  REGRESAMOS EN LA PLATAFORMA DE IOT LAB   *
+*********************************************
+16. 
