@@ -71,4 +71,11 @@ $ sudo ethos_uhcpd.py openmoteb-8 tap0 2a07:2e40:fffe:00ff::/64
 *********************************************
 *  REGRESAMOS EN LA PLATAFORMA DE IOT LAB   *
 *********************************************
-16. 
+16. En el experimento que hemos creado en los dos nodos restantes procedemos a flashearle el gnrc_networking en cada uno de estos
+17. Cuando ya tengamos flasheado y ejectuado abrimos el terminal y procedemos a verificar la IP de cada uno de estos con el siguiente comando:
+    ifconfig
+ 
+18. Cuando tengamos ya la IP global asignada a cada nodo procedemos a realizar un ping para comprobar que todo lo realizado este correcto con el siguiente comando
+    ping6 IP_NODO%7
+    
+19. ROUTER BORDER TERMINADO
