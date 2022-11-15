@@ -1,0 +1,43 @@
+                                                                    UNIVERSIDAD TECNICA DEL NORTE
+                                                                            FICA - CITEL
+                                                                       INTERNET DE LAS COSAS
+
+1. En la maquina virtual de ubuntu procedemos a iniciar sesion con el usuario de iot-lab
+   OJO: El usuario va a depender del deployment compatible con la tarjeta a utilizar 
+   $ ssh user@strasbourg.iot-lab.info
+
+2. Entramos a la carpeta de examples que nos ofrece RIOT y entramos en la carpeta de bourder router
+   $ cd iot-lab/parts/RIOT/examples/gnrc_border_router
+   $ source /opt/riot.source
+
+3. Ingresamos la tarjeta que deseemos utilizar y verificamos en la pagina oficial de iot-lab la informacion que necesitamos como el valor
+   del baudrate.
+	- ETHOS_BAUDRATE = Dependera del dispositivo a utilizar
+	- DEFAULT_CHANNEL = Dependera de la modulacion que utilice
+	- BOARD = Nombre de la placa proporcionada por iot-lab
+
+   $ make ETHOS_BAUDRATE=115200 DEFAULT_CHANNEL=21 BOARD=openmote-b clean all
+
+**********************************************
+*  CREAMOS UNA NUEVA VENTANA EN EL TERMINAL  *
+**********************************************
+4. Iniciamos nuevamente con el usuario ssh
+   $ ssh user@strasbourg.iot-lab.info
+
+5. Procedemos a crear el archivo .elf del Bourder_Router con la direccion que nos da cuando creamos el archivo con la tarjeta, "PASO 3"
+   $ scp nombre_de_usuario@strasbourg.iot-lab.info:/senslab/users/nupan/iot-lab/parts/RIOT/examples/gnrc_border_router/bin/openmote-b/gnrc_border_router.elf 
+     /home/nombre_maquina/Downloads/openmoteb-border-router.elf
+
+******************************************
+*  PROCESO EN LA PLATAFORMA DE IOT LAB   *
+******************************************
+
+6. Sacamos el archivo .elf creado a nuestra maquina fisica y entramos a la pagina de iot-lab para crear un experimento
+7. Creamos un proyecto con los parametros utilizados en la maquina ubuntu
+8. Creamos 3 nodos donde uno sera utilizado para bourder router y los otros dos como nodos.
+9. En el primer nodo procedemos a flashearle con el archivo .elf correspondiente al bourder de router
+
+**************************************
+* REGRESAMOS A LA TERMINAL DE UBUNTU *
+**************************************
+10. 
