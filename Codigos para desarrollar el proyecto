@@ -21,25 +21,23 @@
 **********************************************
 *  CREAMOS UNA NUEVA VENTANA EN EL TERMINAL  *
 **********************************************
-4. Iniciamos nuevamente con el usuario ssh
-   $ ssh user@strasbourg.iot-lab.info
 
-5. Procedemos a crear el archivo .elf del Bourder_Router con la direccion que nos da cuando creamos el archivo con la tarjeta, "PASO 3"
+4. Procedemos a crear el archivo .elf del Bourder_Router con la direccion que nos da cuando creamos el archivo con la tarjeta, "PASO 3"
    $ scp nombre_de_usuario@strasbourg.iot-lab.info:/senslab/users/nupan/iot-lab/parts/RIOT/examples/gnrc_border_router/bin/openmote-b/gnrc_border_router.elf /home/nombre_maquina/Downloads/openmoteb-border-router.elf
 
 ******************************************
 *  PROCESO EN LA PLATAFORMA DE IOT LAB   *
 ******************************************
 
-6. Sacamos el archivo .elf creado a nuestra maquina fisica y entramos a la pagina de iot-lab para crear un experimento
-7. Creamos un proyecto con los parametros utilizados en la maquina ubuntu
-8. Creamos 3 nodos donde uno sera utilizado para bourder router y los otros dos como nodos.
-9. En el primer nodo procedemos a flashearle con el archivo .elf correspondiente al bourder de router y le ejecutamos
+5. Sacamos el archivo .elf creado a nuestra maquina fisica y entramos a la pagina de iot-lab para crear un experimento
+6. Creamos un proyecto con los parametros utilizados en la maquina ubuntu
+7. Creamos 3 nodos donde uno sera utilizado para bourder router y los otros dos como nodos.
+8. En el primer nodo procedemos a flashearle con el archivo .elf correspondiente al bourder de router y le ejecutamos
 
 **************************************
 * REGRESAMOS A LA TERMINAL DE UBUNTU *
 **************************************
-10. En la ventana que esta abierdo la carpeta correspondiente al bourder_router procedemos a poner el siguiente codigo
+9. En la ventana que esta abierdo la carpeta correspondiente al bourder_router procedemos a poner el siguiente codigo
 Puede cambiar dependiendo la configuracion del usuario:
 	- openmoteb-# = Id del nodo
 	- tap0 = Cambia en caso de estar ocupado
@@ -49,33 +47,33 @@ $ sudo ethos_uhcpd.py openmoteb-8 tap0 2a07:2e40:fffe:00ff::/64
 **********************************************
 *  CREAMOS UNA NUEVA VENTANA EN EL TERMINAL  *
 **********************************************
-11. Iniciamos nuevamente con el usuario ssh
+10. Iniciamos nuevamente con el usuario ssh
    $ ssh user@strasbourg.iot-lab.info
    
-12. Entramos nuevamente a la carpeta de examples y entramos a la carpeta de gnrc_networking
+11. Entramos nuevamente a la carpeta de examples y entramos a la carpeta de gnrc_networking
    $ cd iot-lab/parts/RIOT/examples/gnrc_networking
    $ source /opt/riot.source
 
-13. Ingresamos la tarjeta utilizada con el mismo canal que se utilizo en el bourder_router
+12. Ingresamos la tarjeta utilizada con el mismo canal que se utilizo en el bourder_router
    $ make DEFAULT_CHANNEL=21 BOARD=openmote-b clean all
 
 **********************************************
 *  CREAMOS UNA NUEVA VENTANA EN EL TERMINAL  *
 **********************************************
-14. Iniciamos nuevamente con el usuario ssh
+13. Iniciamos nuevamente con el usuario ssh
    $ ssh user@strasbourg.iot-lab.info
 
-15. Procedemos a crear el archivo .elf del gnrc_networking con la direccion que nos da cuando creamos el archivo con la tarjeta, "PASO 13"
+14. Procedemos a crear el archivo .elf del gnrc_networking con la direccion que nos da cuando creamos el archivo con la tarjeta, "PASO 13"
    $ scp nupan@strasbourg.iot-lab.info:/senslab/users/nupan/iot-lab/parts/RIOT/examples/gnrc_networking/bin/openmote-b/gnrc_networking.elf /home/gnupan/Downloads/openmoteb-ipv6-networking.elf
    
 *********************************************
 *  REGRESAMOS EN LA PLATAFORMA DE IOT LAB   *
 *********************************************
-16. En el experimento que hemos creado en los dos nodos restantes procedemos a flashearle el gnrc_networking en cada uno de estos
-17. Cuando ya tengamos flasheado y ejectuado abrimos el terminal y procedemos a verificar la IP de cada uno de estos con el siguiente comando:
+15. En el experimento que hemos creado en los dos nodos restantes procedemos a flashearle el gnrc_networking en cada uno de estos
+16. Cuando ya tengamos flasheado y ejectuado abrimos el terminal y procedemos a verificar la IP de cada uno de estos con el siguiente comando:
     ifconfig
  
-18. Cuando tengamos ya la IP global asignada a cada nodo procedemos a realizar un ping para comprobar que todo lo realizado este correcto con el siguiente comando
+17. Cuando tengamos ya la IP global asignada a cada nodo procedemos a realizar un ping para comprobar que todo lo realizado este correcto con el siguiente comando
     ping6 IP_NODO%7
     
-19. ROUTER BORDER TERMINADO
+18. ROUTER BORDER TERMINADO
